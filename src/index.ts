@@ -1,3 +1,3 @@
-import HelloWorld from '@/components/HelloWorld.vue'
+import Test from './components/test.vue'
 
-export default { HelloWorld }
+export {Test}
