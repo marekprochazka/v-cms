@@ -3,26 +3,7 @@
   "author": "Mark Walker <m.prochazka2002@gmail.com>",
   "main": "./dist/v-cms.umd.cjs",
   "module": "./dist/v-cms.js",
-  "typesVersions": {
-    "*": {
-      "dist/*": [
-        "*.d.ts"
-      ]
-    },
-    "lib": {
-      "dist/lib/*" : [
-        "components/*.d.ts",
-        "composables/*.d.ts"
-      ]
-    }
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/v-cms.js",
-      "require": "./dist/v-cms.umd.cjs"
-    }
-  },
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "src/lib/*"
@@ -37,7 +18,7 @@
     "vite"
   ],
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "scripts": {
     "dev": "vite",
