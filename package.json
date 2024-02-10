@@ -6,10 +6,10 @@
   "type": "module",
   "files": ["dist"],
   "main": "./dist/v-cms.umd.cjs",
-  "module": "./dist/v-cms.js",
+  "module": "./dist/v-cms.es.js",
   "exports": {
     ".": {
-      "import": "./dist/v-cms.js",
+      "import": "./dist/v-cms.es.js",
       "require": "./dist/v-cms.umd.cjs"
     }
   },
