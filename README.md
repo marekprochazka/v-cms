@@ -1,4 +1,4 @@
-# v-cms
+# app
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -37,4 +37,10 @@ yarn dev
 
 ```sh
 yarn build
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+yarn lint
 ```
