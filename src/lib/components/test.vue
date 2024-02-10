@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  console.log('IT WORKS!!!')
+console.log('pls')
 </script>
 
 <template>
   <div>
-    <h1>Bonjour</h1>
+    WORK
   </div>
 </template>
 

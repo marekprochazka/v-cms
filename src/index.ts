@@ -1,3 +1,4 @@
-import Test from './components/test.vue'
+import Test from './lib/components/test.vue'
+import { useCMS } from './lib/composables/useCMS'
 
-export {Test}
+export { Test, useCMS }
