@@ -11,7 +11,7 @@ export default defineConfig({
   build: {
     lib: {
       // src/indext.ts is where we have exported the component(s)
-      entry: resolve(__dirname, "core/index.ts"),
+      entry: resolve(__dirname, "index.ts"),
       name: "V-CMS",
       // the name of the output files when the build is run
       fileName: "v-cms",
