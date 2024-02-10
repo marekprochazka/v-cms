@@ -1,37 +1,44 @@
 import { fileURLToPath, URL } from 'node:url'
-import { resolve } from "path";
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+
+import _package from "./package.json"
+
+function filePath(path: string): string {
+  return fileURLToPath(new URL(path, import.meta.url));
+}
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
   ],
-  build: {
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+   build: {
+    copyPublicDir: false,
+    outDir: filePath("./dist"),
     lib: {
-      // src/indext.ts is where we have exported the component(s)
-      entry: resolve(__dirname, "index.ts"),
-      name: "V-CMS",
-      // the name of the output files when the build is run
-      fileName: "v-cms",
+      entry: filePath("./src/index.ts"),
+      formats: ["es", "umd"],
+      name: "v-cms",
+      fileName: (format) => `v-cms.${format}.js`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ["vue"],
+      external: Object.keys(_package.peerDependencies),
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
-        globals: {
-          vue: "Vue",
-        },
+        globals: { vue: "Vue", },
       },
     },
   },
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('.', import.meta.url))
-    }
-  }
+
 })
