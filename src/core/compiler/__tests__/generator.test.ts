@@ -1,7 +1,7 @@
 import { test, expect } from 'vitest'
 import { ITreeNode } from '../types'
 import { type Component, h, type VNode } from 'vue'
-import { vNodeGenerator } from '../generator'
+import { generateVNodes } from '../generator'
 import c1 from './dummy-components/c1.vue'
 import c2 from './dummy-components/c2.vue'
 import c3 from './dummy-components/c3.vue'
@@ -49,15 +49,15 @@ const TEXT_INPUT = (text: string): ITreeNode => {
 }
 
 const ROOT_OUTPUT = (children: VNode[]): VNode => {
-  return h('div', { class: 'post--root' }, children)
+  return h('div', { class: 'post--root' }, children.length ? children : undefined)
 }
 
 const PLAIN_OUTPUT = (type: string, properties: Record<string, string>, children: VNode[]): VNode => {
-  return h(type, properties, children)
+  return h(type, properties, children.length ? children : undefined)
 }
 
 const VUE_OUTPUT = (type: Component, properties: Record<string, string>, children: VNode[]): VNode => {
-  return h(type, properties, children)
+  return h(type, properties, children.length ?  children : undefined)
 }
 
 const TEXT_OUTPUT = (text: string): VNode => {
@@ -89,7 +89,7 @@ const TEST_CASES: { i: ITreeNode, o: VNode }[] = [
 
 test('testCreateVNode', () => {
   for (const { i, o } of TEST_CASES) {
-    const result = vNodeGenerator(i, components)
+    const result = generateVNodes(i, components)
     expect(result).toEqual(o)
 
   }
