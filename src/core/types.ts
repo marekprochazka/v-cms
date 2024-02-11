@@ -1,6 +1,6 @@
 
 import { z } from 'zod'
-import { VNode } from 'vue'
+import { Component } from 'vue'
 
 const oPostStatus = z.object({
   identifier: z.string(),
@@ -22,20 +22,20 @@ const oPostBase = z.object({
 type IPostBase = z.infer<typeof oPostBase>
 
 interface CRUD<Post> {
-  create: (data: Post) => Post,
-  readList: (filters?: any) => Post[],
-  readDetail: (id: string) => Post,
-  update: (id: string, data: Post[]) => Post,
-  delete: (id: string) => void
+  create: (data: Post) => Promise<Post>,
+  readList: (filters?: any) => Promise<Post[]>,
+  readDetail: (id: string) => Promise<Post | null> ,
+  update: (id: string, data: Post) => Promise<Post>,
+  delete: (id: string) => Promise<void>
 }
 
-interface IElement {
-  dataRaw: VNode,
-  identifier: string
+interface IContentBodyProps {
+  data: IPostBase,
+  components: Record<string, Component>
 }
 
 
 
 export { oPostStatus, oPostBase }
-export type { IPostStatus, IPostBase, CRUD, IElement }
+export type { IPostStatus, IPostBase, CRUD, IContentBodyProps }
 

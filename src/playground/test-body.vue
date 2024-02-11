@@ -1,33 +1,33 @@
 <script setup lang="ts">
 
 import PostBody from '@/core/components/content-body.vue'
-import { type IPostBase } from '@/core/types'
 import Cmp from '@/playground/cmp.vue'
 import CmpWithRequest from '@/playground/cmp-with-request.vue'
-import { type Component } from 'vue'
+import { type Component, ref } from 'vue'
+import { useCMS } from '@/core'
+import type { IContentBodyProps, IPostBase } from '@/core/types'
+import {getActions} from './fakeAPI'
 
-const data: IPostBase = {
-  id: '1',
-  content: '<h1>Hello, world!</h1> {{ cmp }}betweeeeeen{{ cmp-with-request }}  ',
-  title: 'Hello, world!',
-  seo_name: 'hello-world',
-  seo_description: 'Hello, world!',
-  seo_keywords: 'Hello, world!',
-  status: {
-    identifier: 'published',
-    display_name: 'Published'
-  }
-}
 
 const components: Record<string, Component> = {
   'cmp': Cmp,
   'cmp-with-request': CmpWithRequest
 }
 
+const {getContentBodyProps} = useCMS<IPostBase>(getActions(), components)
+
+const bodyProps = ref<IContentBodyProps | null>(null)
+
+async function init() {
+  bodyProps.value = await getContentBodyProps('1')
+}
+
+init()
+
 </script>
 
 <template>
-  <PostBody :data="data" :components="components" />
+  <PostBody v-if="bodyProps" v-bind="bodyProps"  />
 </template>
 
 
