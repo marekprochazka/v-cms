@@ -1,4 +1,4 @@
-import { IToken } from '@/core/types'
+import { IToken } from '@/core/compiler/types'
 
 
 function _handleHTML(html: string): { token: IToken, offset: number } {
@@ -40,6 +40,10 @@ function _handleTEXT(html: string): { token: IToken, offset: number } {
   }
 }
 
+/**
+ * @description
+ * Returns next token
+ */
 function _nextToken(htmlTail: string): { token: IToken, offset: number } {
   const START = 0
   if (htmlTail[START] === '<') {
@@ -52,6 +56,12 @@ function _nextToken(htmlTail: string): { token: IToken, offset: number } {
   return _handleTEXT(htmlTail)
 }
 
+
+/**
+ * @description
+ * Scans the raw HTML containing plain HTML and Vue pseudo-component representation, returns a generator of tokens.
+ * @param rawHtml -> Valid representation of HTML with Vue pseudo-components.
+ */
 export function* scan(rawHtml: string): Generator<IToken> {
   let ptr = 0
   while (ptr < rawHtml.length) {

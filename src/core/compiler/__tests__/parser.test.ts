@@ -1,7 +1,7 @@
 import { test, expect } from 'vitest'
 
 
-import type { INode } from '@/core/types'
+import type { INode } from '@/core/compiler/types'
 import { parse } from '../parser'
 
 const TEST_CASES: { i: string, o: INode }[] = [

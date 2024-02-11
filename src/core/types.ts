@@ -1,6 +1,6 @@
 
 import { z } from 'zod'
-import { Component, VNode } from 'vue'
+import { VNode } from 'vue'
 
 const oPostStatus = z.object({
   identifier: z.string(),
@@ -34,23 +34,8 @@ interface IElement {
   identifier: string
 }
 
-type NodeCategory = 'plain' | 'vue' | 'text' |'root'
 
-type TypeToken = 'START_PLAIN' | 'END_PLAIN' | 'VUE' | 'TEXT' | 'EPSILON'
-
-interface IToken {
-  type: TypeToken
-  value: string
-
-}
-
-interface INode {
-  category: NodeCategory,
-  type: string,
-  properties: Record<string, any>
-  children: INode[]
-}
 
 export { oPostStatus, oPostBase }
-export type { IPostStatus, IPostBase, CRUD, IElement, INode, IToken, NodeCategory }
+export type { IPostStatus, IPostBase, CRUD, IElement }
 

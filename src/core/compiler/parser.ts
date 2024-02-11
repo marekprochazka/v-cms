@@ -1,10 +1,10 @@
-import { INode, IToken } from '@/core/types'
-import { scan } from '@/core/composables/useCMS/scanner'
+import type { INode, IToken } from '@/core/compiler/types'
+import { scan } from '@/core/compiler/scanner'
 import { Stack } from '@/core/structures/stack'
-import { createNode } from '@/core/composables/useCMS/utilities'
+import { createNode } from '@/core/compiler/utilities'
 
 
-const EPS: IToken = { type: 'EPSILON', value: '' }
+const EPS = 'EPSILON'
 
 
 export function parse(raw: string): INode {
@@ -24,7 +24,6 @@ export function parse(raw: string): INode {
     switch (token.type) {
       case 'START_PLAIN':
         const newNode = createNode(token)
-        console.log(stack.top)
         stack.top!.children.push(newNode!)
         stack.push(newNode!)
         break
@@ -40,6 +39,6 @@ export function parse(raw: string): INode {
       case 'EPSILON':
         break
     }
-  } while (token.type !== 'EPSILON')
+  } while (token.type !== EPS)
   return root
 }

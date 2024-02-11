@@ -1,4 +1,4 @@
-import type { INode, IToken, NodeCategory } from '@/core/types'
+import type { INode, IToken } from '@/core/compiler/types'
 
 
 // regex matching: property="value with spaces"
