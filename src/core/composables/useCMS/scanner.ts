@@ -1,15 +1,5 @@
-type TypeToken = 'START_PLAIN' | 'END_PLAIN' | 'VUE' | 'TEXT' | 'EPSILON'
+import { IToken } from '@/core/types'
 
-interface IToken {
-  type: TypeToken
-  value: string
-
-}
-
-const PLAIN_ELEMENT_START = /<[^>]*[^\/]>/
-const PLAIN_ELEMENT_END = /<\/[^>]*>/
-
-const VUE_ELEMENT = /{{\s[^}]*\s}}/
 
 function _handleHTML(html: string): { token: IToken, offset: number } {
   if (html[1] === '/') {
@@ -62,7 +52,7 @@ function _nextToken(htmlTail: string): { token: IToken, offset: number } {
   return _handleTEXT(htmlTail)
 }
 
-export function* scan(rawHtml: string) {
+export function* scan(rawHtml: string): Generator<IToken> {
   let ptr = 0
   while (ptr < rawHtml.length) {
     const { token, offset } = _nextToken(rawHtml.slice(ptr))

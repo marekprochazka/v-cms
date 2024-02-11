@@ -34,6 +34,23 @@ interface IElement {
   identifier: string
 }
 
+type NodeCategory = 'plain' | 'vue' | 'text' |'root'
+
+type TypeToken = 'START_PLAIN' | 'END_PLAIN' | 'VUE' | 'TEXT' | 'EPSILON'
+
+interface IToken {
+  type: TypeToken
+  value: string
+
+}
+
+interface INode {
+  category: NodeCategory,
+  type: string,
+  properties: Record<string, any>
+  children: INode[]
+}
+
 export { oPostStatus, oPostBase }
-export type { IPostStatus, IPostBase, CRUD, IElement }
+export type { IPostStatus, IPostBase, CRUD, IElement, INode, IToken, NodeCategory }
 
