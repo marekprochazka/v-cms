@@ -1,23 +1,28 @@
-import vue from "@vitejs/plugin-vue";
+import vue from '@vitejs/plugin-vue'
 // @ts-ignore
-import * as path from "path";
-import { defineConfig } from "vite";
-import dts from "vite-plugin-dts";
+import * as path from 'path'
+import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
 
 export default defineConfig({
   plugins: [vue(), dts()],
   build: {
     lib: {
       // @ts-ignore
-      entry: path.resolve(__dirname, "src/index.ts"),
-      name: "vCMS",
-      fileName: "v-cms",
+      entry: {'v-cms-core': path.resolve(__dirname, 'src/core/index.ts'), 'v-cms-utils': path.resolve(__dirname, 'src/utils/index.ts')},
     },
     rollupOptions: {
-      external: ["vue"],
+      // @ts-ignore
+      external: ['vue', path.resolve(__dirname, 'src/playground/*'), path.resolve(__dirname, 'src/playground/main.ts')],
+      input: {
+        // @ts-ignore
+        'v-cms-core': path.resolve(__dirname, 'src/core/index.ts'),
+        // @ts-ignore
+        'v-cms-utils': path.resolve(__dirname, 'src/utils/index.ts')
+      },
       output: {
         globals: {
-          vue: "Vue"
+          vue: 'Vue'
         }
       }
     }
@@ -25,7 +30,7 @@ export default defineConfig({
   resolve: {
     alias: {
       // @ts-ignore
-      "@": path.resolve(__dirname, "src")
+      '@': path.resolve(__dirname, 'src')
     }
   }
-});
+})
