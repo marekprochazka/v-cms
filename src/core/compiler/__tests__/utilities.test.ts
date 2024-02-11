@@ -1,7 +1,7 @@
 import { test, expect } from 'vitest'
 
 import { createNode } from '../utilities'
-import type { INode, IToken, NodeCategory } from '@/core/types'
+import type { INode, IToken } from '../types'
 
 const testPairs: {i: IToken, o: INode | null}[] = [
   {
