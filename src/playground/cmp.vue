@@ -1,10 +1,10 @@
 <script setup lang="ts">
-console.log('pls')
+
 </script>
 
 <template>
   <div>
-    WORK
+    aaaaaaaaaaaaaaaaaaaaaaaa
   </div>
 </template>
 

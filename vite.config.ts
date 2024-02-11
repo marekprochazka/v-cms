@@ -13,7 +13,7 @@ export default defineConfig({
     },
     rollupOptions: {
       // @ts-ignore
-      external: ['vue', path.resolve(__dirname, 'src/playground/*'), path.resolve(__dirname, 'src/playground/main.ts')],
+      external: ['vue', path.resolve(__dirname, 'src/playground/*'), path.resolve(__dirname, 'src/playground/main.ts'), path.resolve(__dirname, 'src/**/__tests__/**/*')],
       input: {
         // @ts-ignore
         'v-cms-core': path.resolve(__dirname, 'src/core/index.ts'),
