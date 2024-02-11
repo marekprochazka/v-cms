@@ -1,10 +1,10 @@
 import { test, expect } from 'vitest'
 
 
-import type { INode } from '../types'
+import type { ITreeNode } from '../types'
 import { parse } from '../parser'
 
-const TEST_CASES: { i: string, o: INode }[] = [
+const TEST_CASES: { i: string, o: ITreeNode }[] = [
   {
     i: '<p> ahoj </p>',
     o: {

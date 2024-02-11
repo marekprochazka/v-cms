@@ -1,9 +1,9 @@
 import { test, expect } from 'vitest'
 
 import { createNode } from '../utilities'
-import type { INode, IToken } from '../types'
+import type { ITreeNode, IToken } from '../types'
 
-const testPairs: {i: IToken, o: INode | null}[] = [
+const testPairs: {i: IToken, o: ITreeNode | null}[] = [
   {
     i: {type: 'START_PLAIN', value: '<p>'},
     o: {category: 'plain', type: 'p', properties: {}, children: []}

@@ -6,11 +6,11 @@ interface IToken {
   value: string
 }
 
-interface INode {
+interface ITreeNode {
   category: NodeCategory,
   type: string,
   properties: Record<string, any>
-  children: INode[]
+  children: ITreeNode[]
 }
 
-export type { INode, IToken, NodeCategory, TypeToken }
+export type { ITreeNode, IToken, NodeCategory, TypeToken }

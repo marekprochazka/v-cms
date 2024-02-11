@@ -1,4 +1,4 @@
-import type { INode, IToken } from '@/core/compiler/types'
+import type { ITreeNode, IToken } from '@/core/compiler/types'
 import { scan } from '@/core/compiler/scanner'
 import { Stack } from '@/core/structures/stack'
 import { createNode } from '@/core/compiler/utilities'
@@ -7,8 +7,8 @@ import { createNode } from '@/core/compiler/utilities'
 const EPS = 'EPSILON'
 
 
-export function parse(raw: string): INode {
-  const root: INode = {
+export function parse(raw: string): ITreeNode {
+  const root: ITreeNode = {
     category: 'root',
     type: 'root',
     properties: {},
@@ -16,7 +16,7 @@ export function parse(raw: string): INode {
   }
   const generator = scan(raw)
 
-  const stack = new Stack<INode>()
+  const stack = new Stack<ITreeNode>()
   stack.push(root)
   let token: IToken
   do {

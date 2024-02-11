@@ -1,4 +1,4 @@
-import type { INode, IToken } from '@/core/compiler/types'
+import type { ITreeNode, IToken } from '@/core/compiler/types'
 
 
 // regex matching: property="value with spaces"
@@ -23,7 +23,7 @@ function _extractProperties(str: string): Record<string, any> {
 }
 
 
-export function createNode(token: IToken): INode | null {
+export function createNode(token: IToken): ITreeNode | null {
   switch (token.type) {
     case 'START_PLAIN':
       return {
