@@ -2,29 +2,31 @@ import { test, expect } from 'vitest'
 
 import { scan } from '../scanner'
 
+const EPS = { type: 'EPSILON', value: '' }
+
 const testPairs = [
   {
     i: '<p> ahoj </p>',
     o: [{ type: 'START_PLAIN', 'value': '<p>' }, { type: 'TEXT', 'value': ' ahoj ' }, {
       type: 'END_PLAIN',
       'value': '</p>'
-    }]
+    }, EPS]
   },
-  { i: '{{ ahoj }}', o: [{ type: 'VUE', 'value': '{{ ahoj }}' }] },
-  { i: 'ahoj', o: [{ type: 'TEXT', 'value': 'ahoj' }] },
+  { i: '{{ ahoj }}', o: [{ type: 'VUE', 'value': '{{ ahoj }}' }, EPS] },
+  { i: 'ahoj', o: [{ type: 'TEXT', 'value': 'ahoj' }, EPS] },
   {
     i: '<p> ahoj {{ ahoj }} </p>',
     o: [{ type: 'START_PLAIN', 'value': '<p>' }, { type: 'TEXT', 'value': ' ahoj ' }, {
       type: 'VUE',
       'value': '{{ ahoj }}'
-    }, { type: 'TEXT', 'value': ' ' }, { type: 'END_PLAIN', 'value': '</p>' }]
+    }, { type: 'TEXT', 'value': ' ' }, { type: 'END_PLAIN', 'value': '</p>' }, EPS]
   },
   {
     i: '<h1 class="xddd">Titlelol</h1>',
     o: [{ type: 'START_PLAIN', 'value': '<h1 class="xddd">' }, {
       type: 'TEXT',
       'value': 'Titlelol'
-    }, { type: 'END_PLAIN', 'value': '</h1>' }]
+    }, { type: 'END_PLAIN', 'value': '</h1>' }, EPS]
   },
   {
     i: '<div class="row"><div class="col-12">Test: {{ vue-comp param="jo" }}</div></div>',
@@ -34,7 +36,7 @@ const testPairs = [
     }, { type: 'TEXT', 'value': 'Test: ' }, { type: 'VUE', 'value': '{{ vue-comp param="jo" }}' }, {
       type: 'END_PLAIN',
       'value': '</div>'
-    }, { type: 'END_PLAIN', 'value': '</div>' }]
+    }, { type: 'END_PLAIN', 'value': '</div>' }, EPS]
   }
 
 ]

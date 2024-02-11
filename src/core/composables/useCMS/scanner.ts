@@ -1,4 +1,4 @@
-type TypeToken = 'START_PLAIN' | 'END_PLAIN' | 'VUE' | 'TEXT'
+type TypeToken = 'START_PLAIN' | 'END_PLAIN' | 'VUE' | 'TEXT' | 'EPSILON'
 
 interface IToken {
   type: TypeToken
@@ -69,4 +69,5 @@ export function* scan(rawHtml: string) {
     ptr += offset
     yield token
   }
+  yield { type: 'EPSILON', value: '' }
 }
