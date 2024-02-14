@@ -1,3 +1,7 @@
 import {useTEST} from './composables/test-util'
 
-export {useTEST}
+function anotherTest() {
+    console.log('another test')
+}
+
+export {useTEST, anotherTest}
