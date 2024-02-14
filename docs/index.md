@@ -3,23 +3,18 @@
 layout: home
 
 hero:
-  name: "@mark.walker/v-cms"
-  text: "Simple Vue3 CMS"
-  tagline: My great project tagline
+  name: "@mark.walker/"
+  text: "v-cms"
+  tagline: Simply pluggable editor and transpiler for creating content with power of Vue 3
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Get started
+      link: /installation
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Editor
+    details: Use rich text editor with your pre-defined components
+  - title: Transpiler
+    details: Save your content easily anywhere as raw text, then render it with V-CMS
 ---
 
