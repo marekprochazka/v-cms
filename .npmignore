@@ -1,0 +1,13 @@
+src/
+docs/
+examples/
+node_modules/
+icon.webp
+index.html
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+vitest.config.ts
+yarn.lock
+.vscode/
+.github/
