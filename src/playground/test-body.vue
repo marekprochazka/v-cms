@@ -37,8 +37,9 @@ init()
 
 <template>
   <ContentBody v-if="bodyProps" v-bind="bodyProps"  />
-
-  <Editor v-model="content" v-if="editorProps" v-bind="editorProps" />
+  <!-- TODO fix transpilation of custom config prop  -->
+  <!-- @vue-skip -->
+  <Editor v-model="content" v-if="editorProps" :components="editorProps.components" :custom-config="editorProps.customConfig" />
 </template>
 
 

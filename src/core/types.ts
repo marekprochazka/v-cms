@@ -27,7 +27,7 @@ interface IContentDetailProps {
 
 interface IEditorProps {
   components: Record<string, IComponentInternal>
-  customConfig?: EditorConfig
+  customConfig: EditorConfig
 }
 
 

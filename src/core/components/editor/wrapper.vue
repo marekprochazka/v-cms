@@ -17,8 +17,8 @@ const preview = ref<boolean>(false)
     <button @click="preview = false" :disabled="!preview">Edit</button>
     <button @click="preview = true" :disabled="preview">Preview</button>
   </div>
-  <ck-integration v-if="!preview" v-model="model" v-bind="props" />
-  <content-body v-if="preview" :content="model" :components="props.components"  />
+  <ck-integration v-if="!preview" v-model="model!" v-bind="props" />
+  <content-body v-if="preview" :content="model!" :components="props.components"  />
 
 </template>
 

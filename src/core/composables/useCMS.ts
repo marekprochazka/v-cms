@@ -34,7 +34,7 @@ export function useCMS<Content extends IContentBase>(actions: CRUD<Content>, cus
   function getEditorProps(): IEditorProps {
     return {
       components: COMPONENTS,
-      customConfig: editorConfig
+      customConfig: editorConfig ?? {}
     }
   }
 
