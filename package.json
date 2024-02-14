@@ -45,8 +45,7 @@
     "@ckeditor/ckeditor5-build-classic": "^41.1.0",
     "@ckeditor/ckeditor5-core": "^41.1.0",
     "@ckeditor/ckeditor5-vue": "^5.1.0",
-    "vue": "^3.4.15",
-    "zod": "^3.22.4"
+    "vue": "^3.4.15"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

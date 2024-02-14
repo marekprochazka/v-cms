@@ -1,3 +1,6 @@
+### 0.1.1
+- removed unused dependency (zod)
+
 ### 0.1.0
 - useCMS composable
 - Content Body view
