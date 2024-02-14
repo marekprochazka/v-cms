@@ -18,7 +18,7 @@ export function generateVNodes(tree: ITreeNode, componentsMap: Record<string, Co
         }
         return h(component, tree.properties)
       case 'root':
-        return h('div', {class: "post--root"})
+        return h('div', {class: "body--root"})
     }
   }
 
@@ -38,7 +38,7 @@ export function generateVNodes(tree: ITreeNode, componentsMap: Record<string, Co
       }
       return h(component, tree.properties,  children)
     case 'root':
-      return h('div', {class: "post--root"}, children)
+      return h('div', {class: "body--root"}, children)
   }
 
 }

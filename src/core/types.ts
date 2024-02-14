@@ -1,25 +1,10 @@
-
-import { z } from 'zod'
 import { Component } from 'vue'
 
-const oPostStatus = z.object({
-  identifier: z.string(),
-  display_name: z.string()
-})
 
-type IPostStatus = z.infer<typeof oPostStatus>
-
-const oPostBase = z.object({
-  id: z.string().optional(),
-  content: z.string(),
-  title: z.string(),
-  seo_name: z.string(),
-  seo_description: z.string(),
-  seo_keywords: z.string().optional(),
-  status: oPostStatus
-})
-
-type IPostBase = z.infer<typeof oPostBase>
+interface IContentBase {
+  id: string,
+  content: string
+}
 
 interface CRUD<Post> {
   create: (data: Post) => Promise<Post>,
@@ -29,13 +14,12 @@ interface CRUD<Post> {
   delete: (id: string) => Promise<void>
 }
 
-interface IContentBodyProps {
-  data: IPostBase,
+interface IContentDetailProps {
+  data: IContentBase,
   components: Record<string, Component>
 }
 
 
 
-export { oPostStatus, oPostBase }
-export type { IPostStatus, IPostBase, CRUD, IContentBodyProps }
+export type { CRUD,  IContentBase, IContentDetailProps}
 

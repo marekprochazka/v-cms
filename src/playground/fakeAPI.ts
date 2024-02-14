@@ -1,37 +1,23 @@
-import { CRUD, IPostBase } from '@/core/types'
+import { CRUD, IContentBase } from '@/core/types'
 
 
-const DB: IPostBase[] = [
+const DB: IContentBase[] = [
   {
     id: '1',
-    content: '<h1>Hello, world!</h1> {{ cmp }}betweeeeeen{{ cmp-with-request }}  ',
-    title: 'Hello, world!',
-    seo_name: 'hello-world',
-    seo_description: 'Hello, world!',
-    seo_keywords: 'Hello, world!',
-    status: {
-      identifier: 'published',
-      display_name: 'Published'
-    }
+    content: '<h1>Hello, world!</h1> {{ cmp }}betweeeeeen{{ cmp-with-request }}  '
+
   },
   {
     id: '2',
-    content: '<h1>Hello, world!</h1>',
-    title: 'Hello, world!',
-    seo_name: 'hello-world',
-    seo_description: 'Hello, world!',
-    seo_keywords: 'Hello, world!',
-    status: {
-      identifier: 'published',
-      display_name: 'Published'
-    }
+    content: '<h1>Hello, world!</h1>'
+
   }
 ]
 
 
-export function getActions(): CRUD<IPostBase> {
+export function getActions(): CRUD<IContentBase> {
   return {
-    create: async (post: IPostBase) => {
+    create: async (post: IContentBase) => {
       return await new Promise((resolve, _) => {
           resolve(post)
         }
@@ -51,7 +37,7 @@ export function getActions(): CRUD<IPostBase> {
       )
 
     },
-    update: async (_: string, post: IPostBase) => {
+    update: async (_: string, post: IContentBase) => {
       return await new Promise((resolve, _) => {
           resolve(post)
         }

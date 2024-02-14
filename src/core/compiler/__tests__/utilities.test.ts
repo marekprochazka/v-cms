@@ -38,7 +38,7 @@ const TEST_CASES_CREATE_NODE: {i: IToken, o: ITreeNode | null}[] = [
   }
 ]
 
-test('testExtractStartToken', () => {
+test('testCreateNode', () => {
   for (const { i, o } of TEST_CASES_CREATE_NODE) {
     const result = createNode(i)
     expect(result).toEqual(o)

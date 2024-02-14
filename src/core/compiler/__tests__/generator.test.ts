@@ -16,7 +16,7 @@ const ROOT_INPUT = (children: ITreeNode[]): ITreeNode => {
   return {
     category: 'root',
     tagName: 'root',
-    properties: { class: 'post--root' },
+    properties: { class: 'body--root' },
     children: children
   }
 }
@@ -49,7 +49,7 @@ const TEXT_INPUT = (text: string): ITreeNode => {
 }
 
 const ROOT_OUTPUT = (children: VNode[]): VNode => {
-  return h('div', { class: 'post--root' }, children.length ? children : undefined)
+  return h('div', { class: 'body--root' }, children.length ? children : undefined)
 }
 
 const PLAIN_OUTPUT = (type: string, properties: Record<string, string>, children: VNode[]): VNode => {
