@@ -23,19 +23,19 @@ function _handleVUE(html: string): { token: IToken, offset: number } {
   }
 }
 
-function _handleTEXT(html: string): { token: IToken, offset: number } {
-  const closestPlain = html.indexOf('<')
-  const closestVue = html.indexOf('{{')
+function _handleTEXT(raw: string): { token: IToken, offset: number } {
+  const closestPlain = raw.indexOf('<')
+  const closestVue = raw.indexOf('{{')
   if (closestPlain === -1 && closestVue === -1) {
-    return { token: { type: 'TEXT', value: html }, offset: html.length }
+    return { token: { type: 'TEXT', value: raw }, offset: raw.length }
   }
   if (closestPlain === -1) {
-    return { token: { type: 'TEXT', value: html.slice(0, closestVue) }, offset: closestVue }
+    return { token: { type: 'TEXT', value: raw.slice(0, closestVue) }, offset: closestVue }
   } else if (closestVue === -1) {
-    return { token: { type: 'TEXT', value: html.slice(0, closestPlain) }, offset: closestPlain }
+    return { token: { type: 'TEXT', value: raw.slice(0, closestPlain) }, offset: closestPlain }
   }
   return {
-    token: { type: 'TEXT', value: html.slice(0, Math.min(closestPlain, closestVue)) },
+    token: { type: 'TEXT', value: raw.slice(0, Math.min(closestPlain, closestVue)) },
     offset: Math.min(closestPlain, closestVue)
   }
 }
@@ -44,28 +44,28 @@ function _handleTEXT(html: string): { token: IToken, offset: number } {
  * @description
  * Returns next token
  */
-function _nextToken(htmlTail: string): { token: IToken, offset: number } {
+function _nextToken(raw: string): { token: IToken, offset: number } {
   const START = 0
-  if (htmlTail[START] === '<') {
-    return _handleHTML(htmlTail)
-  } else if (htmlTail[START] === '{') {
-    if (htmlTail[START + 1] === '{') {
-      return _handleVUE(htmlTail)
+  if (raw[START] === '<') {
+    return _handleHTML(raw)
+  } else if (raw[START] === '{') {
+    if (raw[START + 1] === '{') {
+      return _handleVUE(raw)
     }
   }
-  return _handleTEXT(htmlTail)
+  return _handleTEXT(raw)
 }
 
 
 /**
  * @description
- * Scans the raw HTML containing plain HTML and Vue pseudo-component representation, returns a generator of tokens.
- * @param rawHtml -> Valid representation of HTML with Vue pseudo-components.
+ * Scans the raw content of plain HTML and Vue pseudo-component representation, returns a generator of tokens.
+ * @param raw -> Valid representation of HTML with Vue pseudo-components.
  */
-export function* scan(rawHtml: string): Generator<IToken> {
+export function* scan(raw: string): Generator<IToken> {
   let ptr = 0
-  while (ptr < rawHtml.length) {
-    const { token, offset } = _nextToken(rawHtml.slice(ptr))
+  while (ptr < raw.length) {
+    const { token, offset } = _nextToken(raw.slice(ptr))
     ptr += offset
     yield token
   }

@@ -28,21 +28,21 @@ export function createNode(token: IToken): ITreeNode | null {
     case 'START_PLAIN':
       return {
         category: 'plain',
-        type: token.value.slice(1, token.value.indexOf(' ')),
+        tagName: token.value.slice(1, token.value.indexOf(' ')),
         properties: _extractProperties(_stripToProperties(token.value, 'plain')),
         children: []
       }
     case 'VUE':
       return {
         category: 'vue',
-        type: token.value.slice(3, token.value.indexOf(' ', 3)),
+        tagName: token.value.slice(3, token.value.indexOf(' ', 3)),
         properties: _extractProperties(_stripToProperties(token.value, 'vue')),
         children: []
       }
     case 'TEXT':
       return {
         category: 'text',
-        type: 'text',
+        tagName: 'text',
         properties: { text: token.value },
         children: []
       }
@@ -50,4 +50,10 @@ export function createNode(token: IToken): ITreeNode | null {
       return null
 
   }
+}
+
+export function isMatchingEndTag(startTagName: string, endElement: string): boolean{
+  const regex = new RegExp(`</${startTagName}(.*?)>`)
+  return regex.test(endElement)
+
 }

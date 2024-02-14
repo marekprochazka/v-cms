@@ -8,7 +8,7 @@ interface IToken {
 
 interface ITreeNode {
   category: NodeCategory,
-  type: string,
+  tagName: string,
   properties: Record<string, any>
   children: ITreeNode[]
 }

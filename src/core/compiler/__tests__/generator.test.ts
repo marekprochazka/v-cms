@@ -15,7 +15,7 @@ const components: Record<string, Component> = {
 const ROOT_INPUT = (children: ITreeNode[]): ITreeNode => {
   return {
     category: 'root',
-    type: 'root',
+    tagName: 'root',
     properties: { class: 'post--root' },
     children: children
   }
@@ -24,7 +24,7 @@ const ROOT_INPUT = (children: ITreeNode[]): ITreeNode => {
 const PLAIN_INPUT = (type: string, properties: Record<string, string>, children: ITreeNode[]): ITreeNode => {
   return {
     category: 'plain',
-    type: type,
+    tagName: type,
     properties: properties,
     children: children
   }
@@ -33,7 +33,7 @@ const PLAIN_INPUT = (type: string, properties: Record<string, string>, children:
 const VUE_INPUT = (type: string, properties: Record<string, string>, children: ITreeNode[]): ITreeNode => {
   return {
     category: 'vue',
-    type: type,
+    tagName: type,
     properties: properties,
     children: children
   }
@@ -42,7 +42,7 @@ const VUE_INPUT = (type: string, properties: Record<string, string>, children: I
 const TEXT_INPUT = (text: string): ITreeNode => {
   return {
     category: 'text',
-    type: 'text',
+    tagName: 'text',
     properties: { text },
     children: []
   }
