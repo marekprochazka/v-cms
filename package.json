@@ -1,6 +1,19 @@
 {
   "name": "@mark.walker/v-cms",
   "author": "Mark Walker <m.prochazka2002@gmail.com>",
+  "version": "0.1.2",
+  "homepage": "https://marekprochazka.github.io/v-cms/",
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marekprochazka/v-cms.git"
+  },
+  "keywords": [
+    "vue",
+    "cms",
+    "vite"
+  ],
+  "private": false,
+  "type": "module",
   "exports": {
     "./core": {
       "import": "./dist/v-cms-core.js",
@@ -18,18 +31,7 @@
     "src/core/**/*",
     "src/utils/**/*"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marekprochazka/v-cms.git"
-  },
-  "keywords": [
-    "vue",
-    "cms",
-    "vite"
-  ],
-  "private": false,
-  "version": "0.1.1",
-  "type": "module",
+
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
