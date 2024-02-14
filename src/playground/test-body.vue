@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import PostBody from '@/core/components/content-body.vue'
+import ContentBody from '@/core/components/content/body.vue'
 import Cmp from '@/playground/cmp.vue'
 import CmpWithRequest from '@/playground/cmp-with-request.vue'
 import { type Component, ref } from 'vue'
@@ -27,7 +27,7 @@ init()
 </script>
 
 <template>
-  <PostBody v-if="bodyProps" v-bind="bodyProps"  />
+  <ContentBody v-if="bodyProps" v-bind="bodyProps"  />
 </template>
 
 
