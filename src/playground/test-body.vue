@@ -8,6 +8,8 @@ import { useCMS } from '@/core'
 import type { IContentDetailProps, IContentBase } from '@/core/types'
 import {getActions} from './fakeAPI'
 
+import Editor from '@/core/components/editor.vue'
+
 
 const components: Record<string, Component> = {
   'cmp': Cmp,
@@ -28,6 +30,8 @@ init()
 
 <template>
   <ContentBody v-if="bodyProps" v-bind="bodyProps"  />
+
+  <Editor />
 </template>
 
 
