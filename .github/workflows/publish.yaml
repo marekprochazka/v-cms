@@ -15,6 +15,7 @@ jobs:
           node-version: "20"
       - run: yarn
       - run: yarn unit
+      - run: yarn build
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
