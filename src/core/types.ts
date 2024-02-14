@@ -1,4 +1,4 @@
-import { Component } from 'vue'
+import type { Component, ShallowRef } from 'vue'
 
 
 interface IContentBase {
@@ -16,7 +16,7 @@ interface CRUD<Post> {
 
 interface IContentDetailProps {
   data: IContentBase,
-  components: Record<string, Component>
+  components: Record<string, ShallowRef<Component>>
 }
 
 
