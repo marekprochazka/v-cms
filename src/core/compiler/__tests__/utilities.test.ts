@@ -35,6 +35,11 @@ const TEST_CASES_CREATE_NODE: {i: IToken, o: ITreeNode | null}[] = [
   {
     i: {type: 'TEXT', value: 'SOme long and complicated text ___ aincluding some radnogm characters'},
     o: {category: 'text', tagName: 'text', properties: {text: 'SOme long and complicated text ___ aincluding some radnogm characters'}, children: []}
+  },
+  {
+    i: {type: 'TEXT', value: '&nbsp;'},
+    o: {category: 'text', tagName: 'text', properties: {text: ''}, children: []}
+
   }
 ]
 

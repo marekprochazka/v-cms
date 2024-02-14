@@ -1,15 +1,16 @@
 import { test, expect } from 'vitest'
 import { ITreeNode } from '../types'
-import { type Component, h, type VNode } from 'vue'
+import { type Component, h, shallowRef, type VNode } from 'vue'
 import { generateVNodes } from '../generator'
 import c1 from './dummy-components/c1.vue'
 import c2 from './dummy-components/c2.vue'
 import c3 from './dummy-components/c3.vue'
+import { IComponentInternal } from '@/core/types'
 
-const components: Record<string, Component> = {
-  c1,
-  c2,
-  c3
+const components: Record<string, IComponentInternal> = {
+  'c1': { shallowRef: shallowRef(c1), props: [] },
+  'c2': { shallowRef: shallowRef(c2), props: [] },
+  'c3': { shallowRef: shallowRef(c3), props: [] }
 }
 
 const ROOT_INPUT = (children: ITreeNode[]): ITreeNode => {
@@ -57,7 +58,7 @@ const PLAIN_OUTPUT = (type: string, properties: Record<string, string>, children
 }
 
 const VUE_OUTPUT = (type: Component, properties: Record<string, string>, children: VNode[]): VNode => {
-  return h(type, properties, children.length ?  children : undefined)
+  return h(shallowRef(type), properties, children.length ?  children : undefined)
 }
 
 const TEXT_OUTPUT = (text: string): VNode => {

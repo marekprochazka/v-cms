@@ -1,4 +1,5 @@
 import type { Component, ShallowRef } from 'vue'
+import type { EditorConfig } from '@ckeditor/ckeditor5-core'
 
 
 interface IContentBase {
@@ -6,20 +7,30 @@ interface IContentBase {
   content: string
 }
 
-interface CRUD<Post> {
-  create: (data: Post) => Promise<Post>,
-  readList: (filters?: any) => Promise<Post[]>,
-  readDetail: (id: string) => Promise<Post | null> ,
-  update: (id: string, data: Post) => Promise<Post>,
+interface CRUD<Content> {
+  create: (data: Content) => Promise<Content>,
+  readList: (filters?: any) => Promise<Content[]>,
+  readDetail: (id: string) => Promise<Content | null> ,
+  update: (id: string, data: Content) => Promise<Content>,
   delete: (id: string) => Promise<void>
 }
 
+interface IComponentInternal {
+  shallowRef: ShallowRef<Component>
+  props: string[]
+}
+
 interface IContentDetailProps {
-  data: IContentBase,
-  components: Record<string, ShallowRef<Component>>
+  content: string,
+  components: Record<string, IComponentInternal>
+}
+
+interface IEditorProps {
+  components: Record<string, IComponentInternal>
+  customConfig?: EditorConfig
 }
 
 
 
-export type { CRUD,  IContentBase, IContentDetailProps}
+export type { CRUD,  IContentBase, IContentDetailProps, IComponentInternal, IEditorProps}
 

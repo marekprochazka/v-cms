@@ -4,7 +4,7 @@ import { CRUD, IContentBase } from '@/core/types'
 const DB: IContentBase[] = [
   {
     id: '1',
-    content: '<h1>Hello, world!</h1> {{ cmp }}betweeeeeen{{ cmp-with-request }}  '
+    content: '<h1>Hello, world!</h1> {{ cmp }}betweeeeeen{{ cmp-with-request }} prop: {{ prop display="TEST" }} '
 
   },
   {

@@ -11,7 +11,7 @@ import { generateVNodes } from '@/core/compiler/generator'
 
 const props = defineProps<IContentDetailProps>()
 
-const vNodes = generateVNodes(parse(props.data.content), props.components)
+const vNodes = generateVNodes(parse(props.content), props.components)
 
 
 </script>

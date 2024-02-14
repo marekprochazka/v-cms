@@ -43,7 +43,7 @@ export function createNode(token: IToken): ITreeNode | null {
       return {
         category: 'text',
         tagName: 'text',
-        properties: { text: token.value },
+        properties: { text: token.value.replace('&nbsp;', '') },
         children: []
       }
     default:

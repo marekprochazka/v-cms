@@ -3,13 +3,15 @@
 import CK from '@ckeditor/ckeditor5-vue'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import type { EditorConfig } from '@ckeditor/ckeditor5-core'
-import { ref } from 'vue'
+import ComponentAdder from '@/core/components/editor/component-adder.vue'
+import type { IEditorProps } from '@/core/types'
 
-const props = defineProps<{
-  customConfig?: EditorConfig
-}>()
+const props = defineProps<IEditorProps>()
+
+const model = defineModel<string>()
 
 const editor = CK.component
+
 
 const config: EditorConfig = {
   toolbar: {
@@ -38,12 +40,16 @@ const config: EditorConfig = {
     ...props.customConfig}
 
 
-const data = ref('<p>Bonjour from hello world</p>')
 
 </script>
 
 <template>
-  <editor :editor="ClassicEditor" :config="config" v-model="data" />
+  <ComponentAdder :components="props.components" v-model="model" />
+  <editor
+    :editor="ClassicEditor"
+    :config="config"
+    v-model="model"
+  />
 </template>
 
 <style>
