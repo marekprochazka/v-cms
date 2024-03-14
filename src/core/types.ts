@@ -11,7 +11,7 @@ interface CRUD<CC, CL, CD, CU> {
   create: (data: any) => Promise<CC>,
   readList: (filters?: any) => Promise<CL[]>,
   readDetail: (id: string) => Promise<CD | null> ,
-  update: (id: any, data: Partial<CU> | CU) => Promise<CU | null>,
+  update: (id: string, data: CU) => Promise<CU | null>,
   delete: (id: string) => Promise<void>
 }
 
