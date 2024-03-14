@@ -1,7 +1,7 @@
 {
   "name": "@mark.walker/v-cms",
   "author": "Mark Walker <m.prochazka2002@gmail.com>",
-  "version": "0.2.3",
+  "version": "0.2.3b",
   "homepage": "https://marekprochazka.github.io/v-cms/",
     "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
     "@ckeditor/ckeditor5-build-classic": "^41.1.0",
     "@ckeditor/ckeditor5-core": "^41.1.0",
     "@ckeditor/ckeditor5-vue": "^5.1.0",
-    "vue": "^3.4.15"
+    "vue": "^3.4.19"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
