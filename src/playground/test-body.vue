@@ -18,7 +18,7 @@ const components: Record<string, Component> = {
   'prop': CmpWitProp
 }
 
-const {getContentBodyProps, getEditorProps} = useCMS<IContentBase>(getActions(), components)
+const {getContentBodyProps, getEditorProps} = useCMS<IContentBase, IContentBase, IContentBase, IContentBase>(getActions(), components)
 
 const bodyProps = ref<IContentDetailProps | null>(null)
 

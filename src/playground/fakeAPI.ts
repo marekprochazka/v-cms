@@ -15,7 +15,7 @@ const DB: IContentBase[] = [
 ]
 
 
-export function getActions(): CRUD<IContentBase> {
+export function getActions(): CRUD<IContentBase, IContentBase, IContentBase, IContentBase> {
   return {
     create: async (post: IContentBase) => {
       return await new Promise((resolve, _) => {

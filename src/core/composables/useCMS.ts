@@ -1,46 +1,46 @@
-import { type Component, shallowRef } from 'vue'
-import type { CRUD, IContentDetailProps, IContentBase, IComponentInternal, IEditorProps } from '@/core/types'
-import type { EditorConfig } from '@ckeditor/ckeditor5-core'
+import {type Component, shallowRef} from 'vue'
+import type {CRUD, IContentDetailProps, IContentBase, IComponentInternal, IEditorProps} from '@/core/types'
+import type {EditorConfig} from '@ckeditor/ckeditor5-core'
 
 
-export function useCMS<Content extends IContentBase>(actions: CRUD<Content>, customComponents?: Record<string, Component>, editorConfig?: EditorConfig) {
+export function useCMS<CC extends IContentBase, CL extends IContentBase, CD extends IContentBase, CU extends IContentBase>(actions: CRUD<CC, CL, CD, CU>, customComponents?: Record<string, Component>, editorConfig?: EditorConfig) {
 
-  const BASE_COMPONENTS: Record<string, IComponentInternal> = {}
+    const BASE_COMPONENTS: Record<string, IComponentInternal> = {}
 
-  function _safeRefComponents(components: Record<string, Component> | undefined): Record<string, IComponentInternal> | null {
-    if (!components) return null
-    const refs: Record<string, IComponentInternal> = {}
-    for (const key in components) {
-      refs[key] = {
-        shallowRef: shallowRef(components[key]),
-        // @ts-ignore
-        props: Object.keys(components[key].props ?? {})
-      }
+    function _safeRefComponents(components: Record<string, Component> | undefined): Record<string, IComponentInternal> | null {
+        if (!components) return null
+        const refs: Record<string, IComponentInternal> = {}
+        for (const key in components) {
+            refs[key] = {
+                shallowRef: shallowRef(components[key]),
+                // @ts-ignore
+                props: Object.keys(components[key].props ?? {})
+            }
+        }
+        console.log('refs', refs)
+        return refs
     }
-    console.log('refs', refs)
-    return refs
-  }
 
-  const COMPONENTS = { ...BASE_COMPONENTS, ...(_safeRefComponents(customComponents) ?? {}) }
+    const COMPONENTS = {...BASE_COMPONENTS, ...(_safeRefComponents(customComponents) ?? {})}
 
 
-  async function getContentBodyProps(id: string): Promise<IContentDetailProps> {
+    async function getContentBodyProps(id: string): Promise<IContentDetailProps> {
+        return {
+            content: (await actions.readDetail(id))?.content ?? '',
+            components: COMPONENTS
+        }
+    }
+
+    function getEditorProps(): IEditorProps {
+        return {
+            components: COMPONENTS,
+            customConfig: editorConfig ?? {}
+        }
+    }
+
+
     return {
-      content: (await actions.readDetail(id))?.content ?? '',
-      components: COMPONENTS
+        getContentBodyProps,
+        getEditorProps
     }
-  }
-
-  function getEditorProps(): IEditorProps {
-    return {
-      components: COMPONENTS,
-      customConfig: editorConfig ?? {}
-    }
-  }
-
-
-  return {
-    getContentBodyProps,
-    getEditorProps
-  }
 }

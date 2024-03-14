@@ -1,3 +1,5 @@
+### 0.1.12b
+- fixed build error
 ### 0.1.12
 - generalized CRUD interface
 
