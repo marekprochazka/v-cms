@@ -1,3 +1,6 @@
+### 0.1.11
+- added interface exports to 'core' module
+
 ### 0.1.2
 - added homepage link to package.json
 
