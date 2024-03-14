@@ -37,7 +37,7 @@ export function getActions(): CRUD<IContentBase, IContentBase, IContentBase, ICo
       )
 
     },
-    update: async (_: string, post: Partial<IContentBase>) => {
+    update: async (_:string, post: Partial<IContentBase>) => {
       return await new Promise((resolve, _) => {
           resolve(post as IContentBase)
         }
