@@ -4,7 +4,7 @@ import type {EditorConfig} from '@ckeditor/ckeditor5-core'
 
 interface IContentBase {
     id: string,
-    content: string
+    content: string | null
 }
 
 /**

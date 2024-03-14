@@ -1,3 +1,6 @@
+### 0.2.2
+- update content base interface
+
 ### 0.2.1
 - update composable interface
 
