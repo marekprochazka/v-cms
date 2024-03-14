@@ -8,10 +8,10 @@ interface IContentBase {
 }
 
 interface CRUD<CC, CL, CD, CU> {
-  create: (data: CC) => Promise<CD>,
+  create: (data: any) => Promise<CC>,
   readList: (filters?: any) => Promise<CL[]>,
   readDetail: (id: string) => Promise<CD | null> ,
-  update: (id: string, data: CU) => Promise<CU>,
+  update: (id: string, data: Partial<CU>) => Promise<CU | null>,
   delete: (id: string) => Promise<void>
 }
 
