@@ -1,9 +1,10 @@
 import {type Component, shallowRef} from 'vue'
-import type {CRUD, IContentDetailProps, IContentBase, IComponentInternal, IEditorProps} from '@/core/types'
+import type {CRUD, IContentDetailProps, IContentBase, IComponentInternal, IEditorProps, ICMSData} from '@/core/types'
 import type {EditorConfig} from '@ckeditor/ckeditor5-core'
 
 
-export function useCMS<CC extends IContentBase, CL extends IContentBase, CD extends IContentBase, CU extends IContentBase>(actions: CRUD<CC, CL, CD, CU>, customComponents?: Record<string, Component>, editorConfig?: EditorConfig) {
+
+export function useCMS<C extends IContentBase>(config: ICMSData<C>) {
 
     const BASE_COMPONENTS: Record<string, IComponentInternal> = {}
 
@@ -17,16 +18,15 @@ export function useCMS<CC extends IContentBase, CL extends IContentBase, CD exte
                 props: Object.keys(components[key].props ?? {})
             }
         }
-        console.log('refs', refs)
         return refs
     }
 
-    const COMPONENTS = {...BASE_COMPONENTS, ...(_safeRefComponents(customComponents) ?? {})}
+    const COMPONENTS = {...BASE_COMPONENTS, ...(_safeRefComponents(config.customComponents) ?? {})}
 
 
     async function getContentBodyProps(id: string): Promise<IContentDetailProps> {
         return {
-            content: (await actions.readDetail(id))?.content ?? '',
+            content: (await config.getContent(id))?.content ?? '',
             components: COMPONENTS
         }
     }
@@ -34,7 +34,7 @@ export function useCMS<CC extends IContentBase, CL extends IContentBase, CD exte
     function getEditorProps(): IEditorProps {
         return {
             components: COMPONENTS,
-            customConfig: editorConfig ?? {}
+            customConfig: config.editorConfig ?? {}
         }
     }
 

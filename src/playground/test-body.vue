@@ -18,28 +18,28 @@ const components: Record<string, Component> = {
   'prop': CmpWitProp
 }
 
-const {getContentBodyProps, getEditorProps} = useCMS<IContentBase, IContentBase, IContentBase, IContentBase>(getActions(), components)
-
-const bodyProps = ref<IContentDetailProps | null>(null)
-
-const editorProps = ref<IEditorProps | null>(null)
-
-async function init() {
-  bodyProps.value = await getContentBodyProps('1')
-  editorProps.value = getEditorProps()
-}
-
-const content = ref('')
-
-init()
+// const {getContentBodyProps, getEditorProps} = useCMS<IContentBase>(() => , components)
+//
+// const bodyProps = ref<IContentDetailProps | null>(null)
+//
+// const editorProps = ref<IEditorProps | null>(null)
+//
+// async function init() {
+//   bodyProps.value = await getContentBodyProps('1')
+//   editorProps.value = getEditorProps()
+// }
+//
+// const content = ref('')
+//
+// init()
 
 </script>
 
 <template>
-  <ContentBody v-if="bodyProps" v-bind="bodyProps"  />
-  <!-- TODO fix transpilation of custom config prop  -->
-  <!-- @vue-skip -->
-  <Editor v-model="content" v-if="editorProps" :components="editorProps.components" :custom-config="editorProps.customConfig" />
+<!--  <ContentBody v-if="bodyProps" v-bind="bodyProps"  />-->
+<!--  &lt;!&ndash; TODO fix transpilation of custom config prop  &ndash;&gt;-->
+<!--  &lt;!&ndash; @vue-skip &ndash;&gt;-->
+<!--  <Editor v-model="content" v-if="editorProps" :components="editorProps.components" :custom-config="editorProps.customConfig" />-->
 </template>
 
 

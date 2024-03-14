@@ -1,3 +1,6 @@
+### 0.2.0
+- composable rework
+
 ### 0.1.16
 - update CRUD interface
 
