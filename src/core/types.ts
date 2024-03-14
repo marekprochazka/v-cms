@@ -25,7 +25,7 @@ interface CRUD<CC, CL, CD, CU> {
 interface ICMSData<Content extends IContentBase> {
     getContent(id: string): Promise<Content | null>,
 
-    saveContent(content: string): Promise<Content | null>,
+    saveContent(id: string, content: string): Promise<Content | null>,
 
     customComponents?: Record<string, Component>,
     editorConfig?: EditorConfig,
