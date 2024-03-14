@@ -3,7 +3,7 @@
   "author": "Mark Walker <m.prochazka2002@gmail.com>",
   "version": "0.2.3b",
   "homepage": "https://marekprochazka.github.io/v-cms/",
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/marekprochazka/v-cms.git"
   },
@@ -29,7 +29,6 @@
   "files": [
     "dist"
   ],
-
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -42,10 +41,8 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^41.1.0",
-    "@ckeditor/ckeditor5-core": "^41.1.0",
-    "@ckeditor/ckeditor5-vue": "^5.1.0",
-    "vue": "^3.4.19"
+    "quill": "2.0.0-rc.2",
+    "vue": "^3.4.15"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

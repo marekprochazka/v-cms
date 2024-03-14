@@ -2,9 +2,8 @@
 
 import type { IEditorProps } from '@/core/types'
 import { ref } from 'vue'
-import CkIntegration from '@/core/components/editor/ck-integration.vue'
 import ContentBody from '@/core/components/content/body.vue'
-
+import QuillIntegration from "@/core/components/editor/quill-integration.vue";
 const props = defineProps<IEditorProps>()
 
 const model = defineModel<string>()
@@ -17,8 +16,8 @@ const preview = ref<boolean>(false)
     <button @click="preview = false" :disabled="!preview">Edit</button>
     <button @click="preview = true" :disabled="preview">Preview</button>
   </div>
-  <ck-integration v-if="!preview" v-model="model!" v-bind="props" />
   <content-body v-if="preview" :content="model!" :components="props.components"  />
+  <quill-integration v-else v-model="model" />
 
 </template>
 

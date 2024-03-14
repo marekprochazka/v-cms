@@ -1,5 +1,4 @@
 import type {Component, ShallowRef} from 'vue'
-import type {EditorConfig} from '@ckeditor/ckeditor5-core'
 
 
 interface IContentBase {
@@ -28,7 +27,6 @@ interface ICMSData<Content extends IContentBase> {
     saveContent(id: string, content: string): Promise<Content | void>,
 
     customComponents?: Record<string, Component>,
-    editorConfig?: EditorConfig,
 }
 
 interface IComponentInternal {
@@ -43,7 +41,6 @@ interface IContentDetailProps {
 
 interface IEditorProps {
     components: Record<string, IComponentInternal>
-    customConfig: EditorConfig
 }
 
 

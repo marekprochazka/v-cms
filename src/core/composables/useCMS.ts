@@ -1,7 +1,5 @@
 import {type Component, shallowRef} from 'vue'
 import type {CRUD, IContentDetailProps, IContentBase, IComponentInternal, IEditorProps, ICMSData} from '@/core/types'
-import type {EditorConfig} from '@ckeditor/ckeditor5-core'
-
 
 
 export function useCMS<C extends IContentBase>(config: ICMSData<C>) {
@@ -34,7 +32,6 @@ export function useCMS<C extends IContentBase>(config: ICMSData<C>) {
     function getEditorProps(): IEditorProps {
         return {
             components: COMPONENTS,
-            customConfig: config.editorConfig ?? {}
         }
     }
 
