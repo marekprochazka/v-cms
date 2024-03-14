@@ -5,7 +5,7 @@ import { generateVNodes } from '../generator'
 import c1 from './dummy-components/c1.vue'
 import c2 from './dummy-components/c2.vue'
 import c3 from './dummy-components/c3.vue'
-import { IComponentInternal } from '@/core/types'
+import {IComponentInternal} from "../../types";
 
 const components: Record<string, IComponentInternal> = {
   'c1': { shallowRef: shallowRef(c1), props: [] },
@@ -83,7 +83,12 @@ const TEST_CASES: { i: ITreeNode, o: VNode }[] = [
   {
     i: ROOT_INPUT([PLAIN_INPUT('p', {}, [TEXT_INPUT('ahoj')]), VUE_INPUT('c1', {}, []), VUE_INPUT('c2', {}, []), VUE_INPUT('c3', {}, []), TEXT_INPUT('aaa')]),
     o: ROOT_OUTPUT([PLAIN_OUTPUT('p', {}, [TEXT_OUTPUT('ahoj')]), VUE_OUTPUT(c1, {}, []), VUE_OUTPUT(c2, {}, []), VUE_OUTPUT(c3, {}, []), TEXT_OUTPUT('aaa')])
-  }
+  },
+    // <p>aaa</p><br>
+    {
+        i: ROOT_INPUT([PLAIN_INPUT('p', {}, [TEXT_INPUT('aaa')]), PLAIN_INPUT('br', {}, [])]),
+        o: ROOT_OUTPUT([PLAIN_OUTPUT('p', {}, [TEXT_OUTPUT('aaa')]), PLAIN_OUTPUT('br', {}, [])])
+    }
 
 ]
 

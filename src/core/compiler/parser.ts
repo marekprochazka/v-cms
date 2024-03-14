@@ -44,6 +44,9 @@ export function parse(raw: string): ITreeNode {
       case 'VUE':
         nestingStack.top!.children.push(createNode(token)!)
         break
+      case 'LINE_BREAK':
+        nestingStack.top!.children.push(createNode(token)!)
+        break
       case 'TEXT':
         nestingStack.top!.children.push(createNode(token)!)
         break

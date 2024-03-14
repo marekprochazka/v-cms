@@ -15,10 +15,11 @@ import Image from "quill/formats/image";
 import {AlignStyle} from "quill/formats/align";
 
 
-import {onMounted} from "vue";
+import {onMounted, ref, watch} from "vue";
 
 const model = defineModel<string>()
 
+Quill.debug('error');
 Quill.register({
   "modules/toolbar": Toolbar,
   "themes/snow": Snow,
@@ -30,6 +31,8 @@ Quill.register({
   "formats/image": Image,
   "formats/align": AlignStyle,
 });
+
+const componentInserted = ref<Boolean>(false)
 
 onMounted(() => {
   const quill = new Quill('#editor', {
@@ -44,9 +47,21 @@ onMounted(() => {
     placeholder: 'Compose an epic...',
     theme: 'snow', // or 'bubble'
   });
+  if (model.value && quill.root) {
+    quill.root.innerHTML = model.value;
+
+  }
   quill.on('text-change', () => {
     model.value = quill.root.innerHTML;
   });
+  watch(componentInserted, (value) => {
+    if (value) {
+      if (model.value && quill.root) {
+        quill.root.innerHTML = model.value;
+      }
+    }
+  })
+
 });
 </script>
 

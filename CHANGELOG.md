@@ -1,3 +1,7 @@
+### 0.3.0
+- removed old rich-text editor
+- Quill editor added
+
 ### 0.2.2
 - update content base interface
 

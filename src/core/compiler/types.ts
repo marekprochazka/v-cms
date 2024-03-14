@@ -1,6 +1,6 @@
 type NodeCategory = 'plain' | 'vue' | 'text' |'root'
 
-type TypeToken = 'START_PLAIN' | 'END_PLAIN' | 'VUE' | 'TEXT' | 'EPSILON'
+type TypeToken = 'START_PLAIN' | 'END_PLAIN' | 'LINE_BREAK' | 'VUE' | 'TEXT' | 'EPSILON'
 interface IToken {
   type: TypeToken
   value: string

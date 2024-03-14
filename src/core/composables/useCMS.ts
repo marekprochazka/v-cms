@@ -7,6 +7,7 @@ export function useCMS<C extends IContentBase>(config: ICMSData<C>) {
     const BASE_COMPONENTS: Record<string, IComponentInternal> = {}
 
     function _safeRefComponents(components: Record<string, Component> | undefined): Record<string, IComponentInternal> | null {
+        console.log('components', components)
         if (!components) return null
         const refs: Record<string, IComponentInternal> = {}
         for (const key in components) {
@@ -30,6 +31,7 @@ export function useCMS<C extends IContentBase>(config: ICMSData<C>) {
     }
 
     function getEditorProps(): IEditorProps {
+        console.log('COMPONENTS', COMPONENTS)
         return {
             components: COMPONENTS,
         }
