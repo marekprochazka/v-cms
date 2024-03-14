@@ -7,11 +7,11 @@ interface IContentBase {
   content: string
 }
 
-interface CRUD<Content> {
-  create: (data: Content) => Promise<Content>,
-  readList: (filters?: any) => Promise<Content[]>,
-  readDetail: (id: string) => Promise<Content | null> ,
-  update: (id: string, data: Content) => Promise<Content>,
+interface CRUD<CC, CL, CD, CU> {
+  create: (data: CC) => Promise<CD>,
+  readList: (filters?: any) => Promise<CL[]>,
+  readDetail: (id: string) => Promise<CD | null> ,
+  update: (id: string, data: CU) => Promise<CU>,
   delete: (id: string) => Promise<void>
 }
 

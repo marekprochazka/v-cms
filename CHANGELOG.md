@@ -1,3 +1,6 @@
+### 0.1.12
+- generalized CRUD interface
+
 ### 0.1.11
 - added interface exports to 'core' module
 
