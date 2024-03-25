@@ -1,3 +1,5 @@
+### 0.3.2
+- added slot for custom buttons
 ### 0.3.1
 - removed debug display
 - added styling classes

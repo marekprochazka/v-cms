@@ -29,6 +29,7 @@ const editorKey = ref<number>(1)
   <content-body v-if="preview" :content="model!" :components="props.components"  />
 
   <component-adder class="cms--componentAdder" :components="props.components" v-if="!preview" v-model="model" @add-component="handleAddComponent" />
+  <slot name="custom-buttons" />
   <quill-integration class="cms--editor" :key="editorKey" ref="editor" v-if="!preview" v-model="model" />
 
 </template>
