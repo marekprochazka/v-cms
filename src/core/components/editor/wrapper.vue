@@ -22,15 +22,14 @@ const editorKey = ref<number>(1)
 </script>
 
 <template>
-  {{props.components}}
-  <div class="grid">
-    <button @click="preview = false" :disabled="!preview">Edit</button>
-    <button @click="preview = true" :disabled="preview">Preview</button>
+  <div class="cms--grid">
+    <button class="cms--button cms--button__edit" @click="preview = false" :disabled="!preview">Edit</button>
+    <button class="cms--button cms--button__preview" @click="preview = true" :disabled="preview">Preview</button>
   </div>
   <content-body v-if="preview" :content="model!" :components="props.components"  />
 
-  <component-adder :components="props.components" v-if="!preview" v-model="model" @add-component="handleAddComponent" />
-  <quill-integration :key="editorKey" ref="editor" v-if="!preview" v-model="model" />
+  <component-adder class="cms--componentAdder" :components="props.components" v-if="!preview" v-model="model" @add-component="handleAddComponent" />
+  <quill-integration class="cms--editor" :key="editorKey" ref="editor" v-if="!preview" v-model="model" />
 
 </template>
 

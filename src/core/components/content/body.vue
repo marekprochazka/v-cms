@@ -16,7 +16,7 @@ const vNodes = generateVNodes(parse(props.content), props.components)
 
 </script>
 
-<template>
+<template class="cms--contentBody">
   <component :is="vNodes" />
 </template>
 

@@ -23,6 +23,7 @@ export function useCMS<C extends IContentBase>(config: ICMSData<C>) {
     const COMPONENTS = {...BASE_COMPONENTS, ...(_safeRefComponents(config.customComponents) ?? {})}
 
 
+    // change to key or something else generic
     async function getContentBodyProps(id: string): Promise<IContentDetailProps> {
         return {
             content: (await config.getContent(id))?.content ?? '',

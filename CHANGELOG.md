@@ -1,3 +1,7 @@
+### 0.3.1
+- removed debug display
+- added styling classes
+
 ### 0.3.0
 - removed old rich-text editor
 - Quill editor added
