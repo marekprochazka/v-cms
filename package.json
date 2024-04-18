@@ -1,7 +1,7 @@
 {
-  "name": "@mark.walker/v-cms",
+ "name": "@mark.walker/v-cms",
   "author": "Mark Walker <m.prochazka2002@gmail.com>",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "homepage": "https://marekprochazka.github.io/v-cms/",
   "repository": {
     "type": "git",
@@ -13,49 +13,49 @@
     "vite"
   ],
   "private": false,
+  "license": "MIT",
   "type": "module",
   "exports": {
-    "./core": {
-      "import": "./dist/v-cms-core.js",
-      "require": "./dist/v-cms-core.umd.cjs",
-      "types": "./dist/core/index.d.ts"
-    },
-    "./utils": {
-      "import": "./dist/v-cms-utils.js",
-      "require": "./dist/v-cms-utils.umd.cjs",
-      "types": "./dist/utils/index.d.ts"
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
     }
   },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview",
-    "unit": "vitest",
-    "unit-log": "vitest --disable-console-intercept",
-    "coverage": "vitest run --coverage",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "prepack": "nuxt-module-build build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   },
   "dependencies": {
-    "quill": "2.0.0-rc.2",
-    "vue": "^3.4.15"
+    "@nuxt/kit": "^3.11.2",
+    "quill": "^2.0.0"
   },
   "devDependencies": {
+    "@nuxt/devtools": "^1.1.5",
+    "@nuxt/eslint-config": "^0.3.6",
+    "@nuxt/module-builder": "^0.5.5",
+    "@nuxt/schema": "^3.11.2",
+    "@nuxt/test-utils": "^3.12.0",
+    "@types/node": "^20.12.7",
     "@vitejs/plugin-vue": "^5.0.4",
-    "@vitest/coverage-v8": "^1.2.2",
-    "path": "^0.12.7",
-    "typescript": "^5.2.2",
-    "vite": "^5.1.0",
-    "vite-plugin-dts": "^3.7.2",
-    "vitepress": "^1.0.0-rc.42",
-    "vitest": "^1.2.2",
-    "vue-tsc": "^1.8.27"
+    "changelogen": "^0.5.5",
+    "eslint": "^9.0.0",
+    "nuxt": "^3.11.2",
+    "typescript": "^5.4.5",
+    "vitest": "^1.4.0"
   },
-  "peerDependencies": {
-    "vue": "^3.4.15"
+  "resolutions": {
+    "string-width": "4.2.3"
   }
 }
