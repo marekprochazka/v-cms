@@ -47,8 +47,8 @@ onMounted(() => {
     theme: 'snow', // or 'bubble'
   })
   if (model.value && quill.root) {
-    const delta = quill.clipboard.convert({ html: model.value })
-    quill.setContents(delta, 'silent')
+    // const delta = quill.clipboard.convert({ html: model.value })
+    // quill.setContents(delta, 'silent')
   }
   quill.on('text-change', () => {
     model.value = quill.root.innerHTML
