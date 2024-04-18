@@ -1,3 +1,7 @@
+## v1.0.1
+
+[compare changes](https://github.com/marekprochazka/v-cms/compare/0.3.2...v1.0.1)
+
 ### 0.3.2
 - added slot for custom buttons
 ### 0.3.1
