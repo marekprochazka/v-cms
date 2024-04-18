@@ -11,7 +11,8 @@ export default {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     })
   },
-  enhanceApp({ app, router, siteData }) {
+  // eslint-disable-next-line no-empty-pattern
+  enhanceApp({}/* { app, router, siteData } */) {
     // ...
-  }
+  },
 } satisfies Theme

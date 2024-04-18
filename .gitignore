@@ -54,3 +54,8 @@ coverage
 Network Trash Folder
 Temporary Items
 .apdisk
+
+coverage/
+
+docs/.vitepress/dist
+docs/.vitepress/cache

@@ -16,5 +16,38 @@ export default createConfigForNuxt({
   },
 })
   .append(
-    // your custom flat config here...
+    {
+      ignores: ['docs/**/*.*'],
+      rules: {
+        'vue/multi-word-component-names': ['off'],
+        'vue/attributes-order': [
+          'error',
+          {
+            order: [
+              'DEFINITION',
+              'LIST_RENDERING',
+              'CONDITIONALS',
+              'RENDER_MODIFIERS',
+              'GLOBAL',
+              ['UNIQUE', 'SLOT'],
+              'TWO_WAY_BINDING',
+              'OTHER_DIRECTIVES',
+              'OTHER_ATTR',
+              'EVENTS',
+              'CONTENT',
+            ],
+            alphabetical: true,
+          },
+        ],
+        'vue/component-name-in-template-casing': [
+          'error',
+          'kebab-case',
+          {
+            registeredComponentsOnly: false,
+            ignores: [],
+          },
+        ],
+        'quotes': ['error', 'single', { allowTemplateLiterals: true }],
+      },
+    },
   )

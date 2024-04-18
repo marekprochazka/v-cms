@@ -21,7 +21,7 @@ const editorKey = ref<number>(1)
     <slot name="custom-buttons" />
     {{ model }}
     <client-only>
-      <QuillIntegration
+      <quill-integration
         v-if="!preview"
         :key="editorKey"
         ref="editor"
