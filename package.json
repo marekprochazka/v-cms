@@ -1,7 +1,7 @@
 {
   "name": "@mark.walker/v-cms",
   "author": "Mark Walker <m.prochazka2002@gmail.com>",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://marekprochazka.github.io/v-cms/",
   "repository": {
     "type": "git",
@@ -32,11 +32,13 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run lint -- && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "yarn lint -- && yarn test && yarn prepack",
     "lint": "eslint . --ignore-pattern \"docs/*\"",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "docs:dev": "vitepress dev docs"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "changelog": "changelogen --release"
   },
   "dependencies": {
     "@nuxt/kit": "^3.11.2",
