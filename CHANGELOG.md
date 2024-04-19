@@ -1,3 +1,7 @@
+## v1.1.0
+- converted editor into vue-quill editor
+[compare changes](https://github.com/marekprochazka/v-cms/compare/1.0.5...1.1.0)
+
 ## v1.0.3
 
 [compare changes](https://github.com/marekprochazka/v-cms/compare/v1.0.2...v1.0.3)

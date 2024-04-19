@@ -1,26 +1,43 @@
 <template>
   <div>
     Nuxt module playground!
-    <!--    <component :is="vNodes" /> -->
-    <cms-editor v-model="htmlContent" />
+    <!--    <v-nodes /> -->
+    {{ htmlContent }}
+    <component
+      :is="displayComp"
+      :key="k"
+    />
+    <cms-editor
+      :key="kEd"
+      v-model="htmlContent"
+      :toolbar-extra-classes="['broo', 'aaa']"
+      :toolbar-options-custom="[{ handler: doAppend, text: 'Append', classes: ['a', 'b', 'c'] }]"
+      toolbar-options-native="all"
+    />
+    <button @click="doAppend">
+      Append
+    </button>
   </div>
 </template>
 
-<script setup>
-// import TestComp from '~/test-comp.vue'
+<script setup lang="ts">
+import TestComp from '~/test-comp.vue'
 
-const htmlContent = ref('')
+const htmlContent = ref('<p>aaaa</p><p>bbbb</p><p>ccccc</p> {{ T msg="hello" }}')
+const k = ref(0)
+const kEd = ref(0)
+const { compile } = useCompiler({ content: '<p>aaaa</p><p>bbbb</p><p>ccccc</p>', components: { T: TestComp } })
+const vNodes = compile()
+const displayComp = ref(vNodes)
 
-htmlContent.value = `
-  <div>
-    <h1>Heading 1</h1>
-    <p>Paragraph 1</p>
-    {{ test-comp msg="Hello from playground!" }}
-  </div>
-`
+const doAppend = () => {
+  htmlContent.value += '<p>dddd</p>'
+  kEd.value++
+}
 
-// const { vNodes } = useCompiler({
-//   content: htmlContent.value,
-//   components: { 'test-comp': TestComp },
-// })
+watch(htmlContent, () => {
+  console.log('shoot')
+  displayComp.value = compile()
+  k.value++
+})
 </script>

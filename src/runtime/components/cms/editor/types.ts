@@ -1,0 +1,1 @@
+export type ToolbarOption = 'ql-font' | 'ql-size' | 'ql-bold' | 'ql-italic' | 'ql-underline' | 'ql-strike' | 'ql-color' | 'ql-background' | 'ql-script' | 'ql-header' | 'ql-blockquote' | 'ql-code-block' | 'ql-list' | 'ql-indent' | 'ql-direction' | 'ql-align' | 'ql-link' | 'ql-formula' | 'ql-clean'

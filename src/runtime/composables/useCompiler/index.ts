@@ -11,8 +11,6 @@ export default function useCompiler(props: IUseCompilerProps) {
     const refs: Record<string, IComponentInternal> = {}
     for (const key in components) {
       refs[key] = {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
         shallowRef: components[key],
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
@@ -24,9 +22,9 @@ export default function useCompiler(props: IUseCompilerProps) {
 
   const COMPONENTS = { ...BASE_COMPONENTS, ...(_safeRefComponents(props.components) ?? {}) }
 
-  const vNodes = generateVNodes(parse(props.content), COMPONENTS)
+  const compile = () => generateVNodes(parse(props.content), COMPONENTS)
 
   return {
-    vNodes,
+    compile,
   }
 }
