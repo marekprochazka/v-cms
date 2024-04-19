@@ -26,8 +26,8 @@ import TestComp from '~/test-comp.vue'
 const htmlContent = ref('<p>aaaa</p><p>bbbb</p><p>ccccc</p> {{ T msg="hello" }}')
 const k = ref(0)
 const kEd = ref(0)
-const { compile } = useCompiler({ content: '<p>aaaa</p><p>bbbb</p><p>ccccc</p>', components: { T: TestComp } })
-const vNodes = compile()
+const { compile } = useCompiler({ components: { T: TestComp } })
+const vNodes = compile('<p>aaaa</p><p>bbbb</p><p>ccccc</p>')
 const displayComp = ref(vNodes)
 
 const doAppend = () => {
@@ -37,7 +37,7 @@ const doAppend = () => {
 
 watch(htmlContent, () => {
   console.log('shoot')
-  displayComp.value = compile()
+  displayComp.value = compile(htmlContent.value)
   k.value++
 })
 </script>

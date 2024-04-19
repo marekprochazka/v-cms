@@ -22,7 +22,7 @@ export default function useCompiler(props: IUseCompilerProps) {
 
   const COMPONENTS = { ...BASE_COMPONENTS, ...(_safeRefComponents(props.components) ?? {}) }
 
-  const compile = () => generateVNodes(parse(props.content), COMPONENTS)
+  const compile = (raw: string) => generateVNodes(parse(raw), COMPONENTS)
 
   return {
     compile,

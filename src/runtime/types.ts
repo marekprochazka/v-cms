@@ -7,7 +7,6 @@ interface IComponentInternal {
 }
 
 interface IUseCompilerProps {
-  content: string
   components: Record<string, Component>
 }
 

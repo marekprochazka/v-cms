@@ -16,3 +16,23 @@ pnpm add @mark.walker/v-cms
 
 :::
 
+### Add Nuxt Module
+
+```javascript
+export default defineNuxtConfig({
+  // ...
+  modules: [
+    // ...
+    ['@mark.walker/v-cms', {}],
+    // ...
+  ],
+  // ...
+  vite: {
+    optimizeDeps: {
+      // Important
+      include: ['@vueup/vue-quill'],
+    },
+  },
+});
+
+```

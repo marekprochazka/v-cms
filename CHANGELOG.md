@@ -1,3 +1,6 @@
+## v1.1.1
+- fixed compile function in useCompiler
+
 ## v1.1.0
 - converted editor into vue-quill editor
 [compare changes](https://github.com/marekprochazka/v-cms/compare/1.0.5...1.1.0)
