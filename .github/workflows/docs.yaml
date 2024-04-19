@@ -43,6 +43,7 @@ jobs:
         run: yarn install # or pnpm install / yarn install / bun install
       - name: Build with VitePress
         run: |
+          yarn dev:prepare
           yarn docs:build
           touch docs/.vitepress/dist/.nojekyll
       - name: Upload artifact
